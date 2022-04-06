@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
+import 'NotificationService.dart';
 
-void main() => runApp(MyApp());
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await NotificationService().init(); 
+  await NotificationService().requestNotificationPermission();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
